@@ -16,36 +16,61 @@ class Game{
         this.playerOne = new Player ("Damon");
         this.playerTwo = new Player ("Steve");
     }
+    
     runGame(){   // main method
-        this.displayRules;
+        this.displayRules();
         this.playerOne.chooseGesture();
         this.playerTwo.chooseGesture();
-        this.rules = "Each player will choose a gesture, whomever's gesture is dominant will win the round. Whoever wins 2 out of 3 rounds is the ultimate RPSLP champion"
+        
+        
+    }
         
     findWinner(){
         if(this.playerOne.chooseGesture) === (this.playerTwo.chooseGesture){
             console.log("It's a tie!")
         }
-        else if {this.playerOne.chooseGesture === 'Rock' && this.playerTwo.chooseGesture === 'Scissors'){
+        else if (this.playerOne.chooseGesture === 'Rock' && this.playerTwo.chooseGesture === 'Scissors'){
             // console.log("Player One wins this round!")
-            displayWinner()
+            this.displayWinner();
             }
-        }   
+        
+        else if(this.playerOne.chooseGesture === 'Scissors' && this.playerTwo.chooseGesture === 'paper'){
+            console.log("Player One wins this round.")
+            this.displayWinner();
+        } 
+
+        else if (this.playerOne.chooseGesture === 'Paper' && this.playerTwo.chooseGesture === 'Rock'){
+            console.log("Player One wins this round");
+            this.displayWinner();
+        }
+
+        else if(this.playerOne.chooseGesture === 'Spock' && this.playerTwo.chooseGesture === 'Rock'){
+            console.log("Player One wins this round.")
+            //does this below need to be this.displayerWinner??
+            this.displayWinner();
+
+        }
+        
+
+          
     }
 
 
+    //Want to make display winner function to log winner instead of typing "Console log winner" after each circumstance
+    displayWinner(){
+        console.log("")
     }
-    displayWinner(playerOne.userInput, playerTwo.userInput){
-       if(this.playerOne.chooseGesture > this.playerTwo,chooseGesture){
-
-       }
-
+       
+    
     displayRules() {
         console.log("these are the rules!");
+        console.log("Each player will choose a gesture");
+        console.log("Whichever gesture wins, that player gets 1 point");
+        console.log("First player to 5 point wins the game")
     }
-        
-}
+     
 
+}
 
 
 class Player{
@@ -55,6 +80,7 @@ class Player{
         this.gestureChoice = userInput;
         this.gestures = ['rock', 'paper', 'scissors', 'lizard', 'Spock'];
     }
+    
     chooseGesture(){
         let userInput = prompt("Which gesture would you like to use?".  "Rock, Paper, Scissors, Lizard, or Spock")
         return userInput;
@@ -66,12 +92,14 @@ class Player{
 class Computer extends Player {
     constructior(){
         let computerSelection = gestures[Math.floor(Math.random()) * this.gestures.length]
-        console.log(computerSelection)
+        return computerSelection;
     }
 }
 
 
 
+let game = new Game();
+game.runGame();
 
 
         
