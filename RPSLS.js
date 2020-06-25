@@ -1,11 +1,9 @@
 "use strict"
 
+//debugging 'FindWinner' scenarios --> seems like random choices is messed up
+//Display name of winner after one player wins 5 rounds --> line 71
+//allow variations of spelling/casing to gesture choices
 
-
-
-
-//differentiate between 
-//Make a while loop until a player reaches 3 wins
 
 class Game{
     constructor(){}
@@ -13,11 +11,14 @@ class Game{
     RunGame(){   // main method
             this.PickPlayer();
             this.DisplayRules();
+        while(this.PlayerOne.score < 3 && this.PlayerTwo.score < 3){   
             this.PlayerOne.ChooseGesture();
             this.PlayerTwo.ChooseGesture();
-            this.FindWinner()       
-    }     
-    
+            this.FindWinner();
+        }     
+        this.DisplayWinner()
+}   
+   
     PickPlayer(){
         let PlayerOption = prompt("Are you playing a friend or playing alone?", "Enter 'Alone' or 'Friend' ");
         if(PlayerOption === "Friend"){
@@ -31,37 +32,43 @@ class Game{
         return PlayerOption;
     }
 
-    FindWinner(){
-        if(this.PlayerOne.GestureChoice  ===  this.PlayerTwo.GestureChoice){
-            console.log("It's a tie!")
+    FindWinner(){ 
+        
+        if(this.PlayerOne.ChooseGesture  ===  this.PlayerTwo.ChooseGesture){
+            console.log("It's a tie!");
+            
         }
         else if (this.PlayerOne.GestureChoice === 'Rock' && this.PlayerTwo.GestureChoice === 'Scissors'){
-            this.DisplayWinner();
-            }        
+            console.log("Player one wins this round!");
+            this.PlayerOne.score ++;
+        }        
         else if(this.PlayerOne.GestureChoice === 'Scissors' && this.PlayerTwo.GestureChoice === 'Paper'){
-            this.DisplayWinner();
+            console.log("Player one wins this round!");
+            this.PlayerOne.score ++;
         } 
         else if (this.PlayerOne.GestureChoice === 'Paper' && this.PlayerTwo.GestureChoice === 'Rock'){       
-            this.DisplayWinner();
+            console.log("Player one wins this round!");
+            this.PlayerOne.score ++;
         }
         else if(this.PlayerOne.GestureChoice === 'Spock' && this.PlayerTwo.GestureChoice === 'Rock'){
-            this.DisplayWinner();
+            console.log("Player one wins this round!");
+            this.PlayerOne.score ++;
         }
         else if (this.PlayerOne.GestureChoice === 'Lizard' && this.PlayerTwo.GestureChoice === 'Paper'){
-            this.DisplayWinner();
+            console.log("Player one wins this round!");
+            this.PlayerOne.score ++;
         }
         else{
-            console.log("Player two wins this round!")
-        }
+            console.log("Player two wins this round!");
+            this.PlayerOne.score ++;
+        }          
         
-
-          
     }
 
 
     //Want to make display winner function to log winner instead of typing "Console log winner" after each circumstance
     DisplayWinner(){
-        console.log("You have won this round!")
+        console.log(`${this.name} you have won the match!`)
     }
        
     
@@ -83,33 +90,26 @@ class Player{
         this.gestures = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock'];
     }
     
-//need logic for "player one to choose" and "player two to choose"
 
     ChooseGesture(){
         let userChoose = prompt(`${this.name},Which gesture would you like to use? ,  "Rock, Paper, Scissors, Lizard, or Spock`)
         this.GestureChoice = userChoose;
-    }
-
-}
-
-
-class Computer extends Player {
-    constructor(){
-       super("R2-D2");
         
     }
 
-    ChooseGesture(){
-        this.GestureChoice = this.gestures[Math.floor(Math.random()) * this.gestures.length]
-    }
 }
 
+class Computer extends Player {
+    constructor(){
+       super("R2-D2");       
+    }
+
+    ChooseGesture(){ 
+        this.GestureChoice = this.gestures[Math.floor(Math.random()) * this.gestures.length]
+    }
+ }
 
 
 let game = new Game();
 game.RunGame();
-
-
-        
-
 
