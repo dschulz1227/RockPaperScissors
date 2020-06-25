@@ -1,66 +1,53 @@
 "use strict"
 
-//two player game- PvP or PvC
-
-//class for Player, Gestures, Game
-//5 different gesture options
-    //computer will generate random gesture
-    //Players will choose gesture via "prompt"
 
 
-//As a developer,I want to store all ofthe gesture options/choices in an array.
-//I want to find a way to utilize the array of gestures within my code (display gesture options, assign player a gesture,etc).
+
+
+//differentiate between 
+//Make a while loop until a player reaches 3 wins
 
 class Game{
-    constructor(){
-        RunGame(){   // main method
+    constructor(){}
+        
+    RunGame(){   // main method
             this.PickPlayer();
             this.DisplayRules();
             this.PlayerOne.ChooseGesture();
             this.PlayerTwo.ChooseGesture();
             this.FindWinner()       
-        }
     }     
     
     PickPlayer(){
         let PlayerOption = prompt("Are you playing a friend or playing alone?", "Enter 'Alone' or 'Friend' ");
         if(PlayerOption === "Friend"){
-            this.PlayerOne = new Player("John");
-            this.PlayerTwo = new Player();
+            this.PlayerOne = new Player(prompt("Player one, enter your name"));
+            this.PlayerTwo = new Player(prompt("Player two, enter your name"));
         }
         else{        
-            this.PlayerOne = new Player ("Damon");
+            this.PlayerOne = new Player (prompt("Player, enter your name"));
             this.PlayerTwo = new Computer();
         }
         return PlayerOption;
     }
 
     FindWinner(){
-        if(this.PlayerOne.gestureChoice  ===  this.PlayerTwo.gestureChoice){
+        if(this.PlayerOne.GestureChoice  ===  this.PlayerTwo.GestureChoice){
             console.log("It's a tie!")
         }
-        else if (this.PlayerOne.gestureChoice === 'Rock' && this.PlayerTwo.ChooseGesture === 'Scissors'){
-            // console.log("Player One wins this round!")
+        else if (this.PlayerOne.GestureChoice === 'Rock' && this.PlayerTwo.GestureChoice === 'Scissors'){
             this.displayWinner();
-            }
-        
-        else if(this.PlayerOne.ChooseGesture === 'Scissors' && this.PlayerTwo.ChooseGesture === 'Paper'){
-            
+            }        
+        else if(this.PlayerOne.GestureChoice === 'Scissors' && this.PlayerTwo.GestureChoice === 'Paper'){
             this.displayWinner();
         } 
-
-        else if (this.PlayerOne.ChooseGesture === 'Paper' && this.PlayerTwo.ChooseGesture === 'Rock'){
-           
+        else if (this.PlayerOne.GestureChoice === 'Paper' && this.PlayerTwo.GestureChoice === 'Rock'){       
             this.displayWinner();
         }
-
-        else if(this.PlayerOne.ChooseGesture === 'Spock' && this.PlayerTwo.ChooseGesture === 'Rock'){
-            
-            //does this below need to be this.displayerWinner??
+        else if(this.PlayerOne.GestureChoice === 'Spock' && this.PlayerTwo.GestureChoice === 'Rock'){
             this.displayWinner();
-
         }
-        else if (this.PlayerOne.ChooseGesture === 'Lizard' && this.PlayerTwo.ChooseGesture === 'Paper'){
+        else if (this.PlayerOne.GestureChoice === 'Lizard' && this.PlayerTwo.GestureChoice === 'Paper'){
             this.displayWinner();
         }
         
@@ -89,35 +76,35 @@ class Player{
     constructor(name){
         this.score = 0;
         this.name = name;
-        this.gestureChoice = "";
-        this.gestures = ['rock', 'paper', 'scissors', 'lizard', 'Spock'];
+        this.GestureChoice = "";
+        this.gestures = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock'];
     }
     
 //need logic for "player one to choose" and "player two to choose"
 
     ChooseGesture(){
-        let userChoose = prompt("Which gesture would you like to use?" ,  "Rock, Paper, Scissors, Lizard, or Spock")
-        this.gestureChoice = userChoose
+        let userChoose = prompt(`${this.name},Which gesture would you like to use? ,  "Rock, Paper, Scissors, Lizard, or Spock`)
+        this.GestureChoice = userChoose;
     }
 
 }
 
 
 class Computer extends Player {
-    constructior(){
+    constructor(){
        super("R2-D2");
         
     }
 
     ChooseGesture(){
-        this.gestureChoice = gestures[Math.floor(Math.random()) * this.gestures.length]
+        this.GestureChoice = this.gestures[Math.floor(Math.random()) * this.gestures.length]
     }
 }
 
 
 
 let game = new Game();
-game.runGame();
+game.RunGame();
 
 
         
