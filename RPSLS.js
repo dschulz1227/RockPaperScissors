@@ -11,12 +11,12 @@ class Game{
     RunGame(){   // main method
             this.PickPlayer();
             this.DisplayRules();
-        while(this.PlayerOne.score < 3 && this.PlayerTwo.score < 3){   
+        while(this.PlayerOne.score < 5 && this.PlayerTwo.score < 5){   
             this.PlayerOne.ChooseGesture();
             this.PlayerTwo.ChooseGesture();
-            this.FindWinner();
+            this.FindWinner();    
         }     
-        this.DisplayWinner()
+        this.DisplayWinner();
 }   
    
     PickPlayer(){
@@ -34,7 +34,7 @@ class Game{
 
     FindWinner(){ 
         
-        if(this.PlayerOne.ChooseGesture  ===  this.PlayerTwo.ChooseGesture){
+        if(this.PlayerOne.GestureChoice  ===  this.PlayerTwo.GestureChoice){
             console.log("It's a tie!");
             
         }
@@ -60,7 +60,7 @@ class Game{
         }
         else{
             console.log("Player two wins this round!");
-            this.PlayerOne.score ++;
+            this.PlayerTwo.score ++;
         }          
         
     }
@@ -92,6 +92,7 @@ class Player{
     
 
     ChooseGesture(){
+        // console.log(this.gestures);
         let userChoose = prompt(`${this.name},Which gesture would you like to use? ,  "Rock, Paper, Scissors, Lizard, or Spock`)
         this.GestureChoice = userChoose;
         
