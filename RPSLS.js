@@ -36,19 +36,22 @@ class Game{
             console.log("It's a tie!")
         }
         else if (this.PlayerOne.GestureChoice === 'Rock' && this.PlayerTwo.GestureChoice === 'Scissors'){
-            this.displayWinner();
+            this.DisplayWinner();
             }        
         else if(this.PlayerOne.GestureChoice === 'Scissors' && this.PlayerTwo.GestureChoice === 'Paper'){
-            this.displayWinner();
+            this.DisplayWinner();
         } 
         else if (this.PlayerOne.GestureChoice === 'Paper' && this.PlayerTwo.GestureChoice === 'Rock'){       
-            this.displayWinner();
+            this.DisplayWinner();
         }
         else if(this.PlayerOne.GestureChoice === 'Spock' && this.PlayerTwo.GestureChoice === 'Rock'){
-            this.displayWinner();
+            this.DisplayWinner();
         }
         else if (this.PlayerOne.GestureChoice === 'Lizard' && this.PlayerTwo.GestureChoice === 'Paper'){
-            this.displayWinner();
+            this.DisplayWinner();
+        }
+        else{
+            console.log("Player two wins this round!")
         }
         
 
@@ -57,7 +60,7 @@ class Game{
 
 
     //Want to make display winner function to log winner instead of typing "Console log winner" after each circumstance
-    displayWinner(){
+    DisplayWinner(){
         console.log("You have won this round!")
     }
        
