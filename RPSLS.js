@@ -1,8 +1,9 @@
 "use strict"
 
-//*** Computer class picks 'rock' everytime
-//*** Display name of winner after one player wins 5 rounds --> line 71 maybe "ALERT" name of winner
+
+
 //*** allow variations of spelling/casing to gesture choices
+//clean up code
 
 
 class Game{
@@ -17,7 +18,12 @@ class Game{
             this.PlayerTwo.ChooseGesture();
             this.FindWinner();    
         }     
-        this.DisplayWinner();
+        if(this.PlayerOne.score === 5){
+            this.DisplayWinner(this.PlayerOne.name);
+        }
+        else{
+            this.DisplayWinner(this.PlayerTwo.name);
+        }
 }   
    
     PickPlayer(){
@@ -68,16 +74,11 @@ class Game{
     }
 
 
-    //Want to make display winner function to log winner instead of typing "Console log winner" after each circumstance
-    DisplayWinner(Playerone,PlayerTwo){
-        if(this.PlayerOne.Score === 5){
-        alert(this.PlayerOne + " you have won the match!");
-            console.log(this.PlayerOne + " you have won the match!");
-        }
-        else{
-        alert(this.PlayerTwo + " you have won the match!");
-        console.log(this.PlayerTwo + " you have won the match!");
-        }
+
+    DisplayWinner(matchWinner){
+       
+         alert(`${matchWinner} won this match!`);
+         console.log(`${matchWinner} won this match!`);
     }
        
     
