@@ -1,7 +1,7 @@
 "use strict"
 
-//debugging 'FindWinner' scenarios --> seems like random choices is messed up
-//Display name of winner after one player wins 5 rounds --> line 71
+//Computer class picks 'rock' everytime
+//Display name of winner after one player wins 5 rounds --> line 71 maybe "ALERT" name of winner
 //allow variations of spelling/casing to gesture choices
 
 
@@ -35,30 +35,37 @@ class Game{
     FindWinner(){ 
         
         if(this.PlayerOne.GestureChoice  ===  this.PlayerTwo.GestureChoice){
+            alert("It's a Tie!");
             console.log("It's a tie!");
             
         }
         else if (this.PlayerOne.GestureChoice === 'Rock' && this.PlayerTwo.GestureChoice === 'Scissors'){
+            alert("Player One wins this round!");
             console.log("Player one wins this round!");
             this.PlayerOne.score ++;
         }        
         else if(this.PlayerOne.GestureChoice === 'Scissors' && this.PlayerTwo.GestureChoice === 'Paper'){
+            alert("Player One wins this round!");
             console.log("Player one wins this round!");
             this.PlayerOne.score ++;
         } 
         else if (this.PlayerOne.GestureChoice === 'Paper' && this.PlayerTwo.GestureChoice === 'Rock'){       
+            alert("Player One wins this round!");
             console.log("Player one wins this round!");
             this.PlayerOne.score ++;
         }
         else if(this.PlayerOne.GestureChoice === 'Spock' && this.PlayerTwo.GestureChoice === 'Rock'){
+            alert("Player One wins this round!");
             console.log("Player one wins this round!");
             this.PlayerOne.score ++;
         }
         else if (this.PlayerOne.GestureChoice === 'Lizard' && this.PlayerTwo.GestureChoice === 'Paper'){
+            alert("Player One wins this round!");
             console.log("Player one wins this round!");
             this.PlayerOne.score ++;
         }
         else{
+            alert("Player Two wins this round!");
             console.log("Player two wins this round!");
             this.PlayerTwo.score ++;
         }          
