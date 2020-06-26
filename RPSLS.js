@@ -1,8 +1,8 @@
 "use strict"
 
-//Computer class picks 'rock' everytime
-//Display name of winner after one player wins 5 rounds --> line 71 maybe "ALERT" name of winner
-//allow variations of spelling/casing to gesture choices
+//*** Computer class picks 'rock' everytime
+//*** Display name of winner after one player wins 5 rounds --> line 71 maybe "ALERT" name of winner
+//*** allow variations of spelling/casing to gesture choices
 
 
 class Game{
@@ -65,8 +65,10 @@ class Game{
             this.PlayerOne.score ++;
         }
         else{
-            alert("Player Two wins this round!");
-            console.log("Player two wins this round!");
+            this.RoundWinner();
+            
+            // alert("Player Two wins this round!");
+            // console.log("Player two wins this round!");
             this.PlayerTwo.score ++;
         }          
         
@@ -80,21 +82,28 @@ class Game{
        
     
     DisplayRules() {
-        console.log("these are the rules!");
+        console.log("RULES");
         console.log("Each player will choose a gesture");
         console.log("Whichever gesture wins, that player gets 1 point");
         console.log("First player to 5 point wins the game")
     }
      
+    RoundWinner(){
+        alert(`${this.player} won this round!`);
+        console.log(`${this.player} won this round!`);
+    }
+
+
 }
 
 
 class Player{
     constructor(name){
         this.score = 0;
-        this.name = name;
+        this.name = name ;
         this.GestureChoice = "";
         this.gestures = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock'];
+        
     }
     
 
@@ -103,17 +112,19 @@ class Player{
         let userChoose = prompt(`${this.name},Which gesture would you like to use? ,  "Rock, Paper, Scissors, Lizard, or Spock`)
         this.GestureChoice = userChoose;
         
+        
     }
 
 }
 
 class Computer extends Player {
-    constructor(){
+    constructor(name){
        super("R2-D2");       
     }
 
     ChooseGesture(){ 
-        this.GestureChoice = this.gestures[Math.floor(Math.random()) * this.gestures.length]
+        
+        this.GestureChoice = this.gestures[ Math.floor(Math.random() * this.gestures.length) ];
     }
  }
 
