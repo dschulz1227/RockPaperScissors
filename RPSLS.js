@@ -11,6 +11,7 @@ class Game{
     RunGame(){   // main method
             this.PickPlayer();
             this.DisplayRules();
+            console.log("These are the gestures you have to choose from: " + this.gestures);
         while(this.PlayerOne.score < 5 && this.PlayerTwo.score < 5){   
             this.PlayerOne.ChooseGesture();
             this.PlayerTwo.ChooseGesture();
@@ -40,35 +41,27 @@ class Game{
             
         }
         else if (this.PlayerOne.GestureChoice === 'Rock' && this.PlayerTwo.GestureChoice === 'Scissors'){
-            alert("Player One wins this round!");
-            console.log("Player one wins this round!");
+            this.RoundWinner(this.PlayerOne.name);
             this.PlayerOne.score ++;
         }        
         else if(this.PlayerOne.GestureChoice === 'Scissors' && this.PlayerTwo.GestureChoice === 'Paper'){
-            alert("Player One wins this round!");
-            console.log("Player one wins this round!");
+            this.RoundWinner(this.PlayerOne.name);
             this.PlayerOne.score ++;
         } 
         else if (this.PlayerOne.GestureChoice === 'Paper' && this.PlayerTwo.GestureChoice === 'Rock'){       
-            alert("Player One wins this round!");
-            console.log("Player one wins this round!");
+            this.RoundWinner(this.PlayerOne.name);
             this.PlayerOne.score ++;
         }
         else if(this.PlayerOne.GestureChoice === 'Spock' && this.PlayerTwo.GestureChoice === 'Rock'){
-            alert("Player One wins this round!");
-            console.log("Player one wins this round!");
+            this.RoundWinner(this.PlayerOne.name);
             this.PlayerOne.score ++;
         }
         else if (this.PlayerOne.GestureChoice === 'Lizard' && this.PlayerTwo.GestureChoice === 'Paper'){
-            alert("Player One wins this round!");
-            console.log("Player one wins this round!");
+            this.RoundWinner(this.PlayerOne.name);
             this.PlayerOne.score ++;
         }
         else{
-            this.RoundWinner();
-            
-            // alert("Player Two wins this round!");
-            // console.log("Player two wins this round!");
+            this.RoundWinner(this.PlayerTwo.name);
             this.PlayerTwo.score ++;
         }          
         
@@ -76,8 +69,15 @@ class Game{
 
 
     //Want to make display winner function to log winner instead of typing "Console log winner" after each circumstance
-    DisplayWinner(){
-        console.log(`${this.name} you have won the match!`)
+    DisplayWinner(Playerone,PlayerTwo){
+        if(this.PlayerOne.Score === 5){
+        alert(this.PlayerOne + " you have won the match!");
+            console.log(this.PlayerOne + " you have won the match!");
+        }
+        else{
+        alert(this.PlayerTwo + " you have won the match!");
+        console.log(this.PlayerTwo + " you have won the match!");
+        }
     }
        
     
@@ -88,9 +88,9 @@ class Game{
         console.log("First player to 5 point wins the game")
     }
      
-    RoundWinner(){
-        alert(`${this.player} won this round!`);
-        console.log(`${this.player} won this round!`);
+    RoundWinner(roundWinner){
+        alert(`${roundWinner} won this round!`);
+        console.log(`${roundWinner} won this round!`);
     }
 
 
@@ -108,8 +108,8 @@ class Player{
     
 
     ChooseGesture(){
-        // console.log(this.gestures);
-        let userChoose = prompt(`${this.name},Which gesture would you like to use? ,  "Rock, Paper, Scissors, Lizard, or Spock`)
+        
+        let userChoose = prompt(`${this.name},Which gesture would you like to use?` ,  "Rock, Paper, Scissors, Lizard, or Spock");
         this.GestureChoice = userChoose;
         
         
