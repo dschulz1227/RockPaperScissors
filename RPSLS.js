@@ -27,8 +27,8 @@ class Game{
 }   
    
     PickPlayer(){
-        let PlayerOption = prompt("Are you playing a friend or playing alone?", "Enter 'Alone' or 'Friend' ");
-        if(PlayerOption === "Friend"){
+        let PlayerOption = prompt("Are you playing a friend or playing alone?", "Enter 'Alone' or 'Friend' ").toUpperCase();
+        if(PlayerOption === "FRIEND"){
             this.PlayerOne = new Player(prompt("Player one, enter your name"));
             this.PlayerTwo = new Player(prompt("Player two, enter your name"));
         }
@@ -46,23 +46,23 @@ class Game{
             console.log("It's a tie!");
             
         }
-        else if (this.PlayerOne.GestureChoice === 'Rock' && this.PlayerTwo.GestureChoice === 'Scissors'){
+        else if (this.PlayerOne.GestureChoice === 'ROCK' && this.PlayerTwo.GestureChoice === 'SCISSORS'){
             this.RoundWinner(this.PlayerOne.name);
             this.PlayerOne.score ++;
         }        
-        else if(this.PlayerOne.GestureChoice === 'Scissors' && this.PlayerTwo.GestureChoice === 'Paper'){
+        else if(this.PlayerOne.GestureChoice === 'SCISSORS' && this.PlayerTwo.GestureChoice === 'PAPER'){
             this.RoundWinner(this.PlayerOne.name);
             this.PlayerOne.score ++;
         } 
-        else if (this.PlayerOne.GestureChoice === 'Paper' && this.PlayerTwo.GestureChoice === 'Rock'){       
+        else if (this.PlayerOne.GestureChoice === 'PAPER' && this.PlayerTwo.GestureChoice === 'ROCK'){       
             this.RoundWinner(this.PlayerOne.name);
             this.PlayerOne.score ++;
         }
-        else if(this.PlayerOne.GestureChoice === 'Spock' && this.PlayerTwo.GestureChoice === 'Rock'){
+        else if(this.PlayerOne.GestureChoice === 'SPOCK' && this.PlayerTwo.GestureChoice === 'ROCK'){
             this.RoundWinner(this.PlayerOne.name);
             this.PlayerOne.score ++;
         }
-        else if (this.PlayerOne.GestureChoice === 'Lizard' && this.PlayerTwo.GestureChoice === 'Paper'){
+        else if (this.PlayerOne.GestureChoice === 'LIZARD' && this.PlayerTwo.GestureChoice === 'PAPER'){
             this.RoundWinner(this.PlayerOne.name);
             this.PlayerOne.score ++;
         }
@@ -103,14 +103,14 @@ class Player{
         this.score = 0;
         this.name = name ;
         this.GestureChoice = "";
-        this.gestures = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock'];
+        this.gestures = ['ROCK', 'PAPER', 'SCISSORS', 'LIZARD', 'SPOCK'];
         
     }
     
 
     ChooseGesture(){
         
-        let userChoose = prompt(`${this.name},Which gesture would you like to use?` ,  "Rock, Paper, Scissors, Lizard, or Spock");
+        let userChoose = prompt(`${this.name},Which gesture would you like to use?` ,  "Rock, Paper, Scissors, Lizard, or Spock").toUpperCase();
         this.GestureChoice = userChoose;
         
         
