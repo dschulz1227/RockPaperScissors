@@ -2,7 +2,7 @@
 
 
 
-//*** allow variations of spelling/casing to gesture choices
+
 //clean up code
 
 
